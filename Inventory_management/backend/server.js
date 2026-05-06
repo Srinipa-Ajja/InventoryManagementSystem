@@ -318,7 +318,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // ==========================
 // Middleware
@@ -337,12 +337,14 @@ mongoose
   .connect(mongoURI)
   .then(() => {
     console.log("✅ MongoDB connected successfully");
-    app.listen(PORT, () =>
-      console.log(`🚀 Server running on http://localhost:${PORT}`)
-    );
-  })
-  .catch((err) => console.error("❌ MongoDB connection failed:", err));
 
+    app.listen(process.env.PORT || 4000, "0.0.0.0", () => {
+      console.log(`🚀 Server running on port ${process.env.PORT || 4000}`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err);
+  });
 // ==========================
 // Schemas & Models
 // ==========================
