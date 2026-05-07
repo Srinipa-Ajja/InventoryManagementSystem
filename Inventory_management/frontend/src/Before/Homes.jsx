@@ -7,7 +7,7 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/grocery")
+    fetch("/api/grocery")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched data:", data);

@@ -39,7 +39,7 @@
 //     setScannedCode(barcode);
 
 //     try {
-//       const res = await fetch(`http://localhost:4000/api/grocery/barcode/${barcode}`);
+//       const res = await fetch(`/api/grocery/barcode/${barcode}`);
 //       const data = await res.json();
 
 //       if (data && !data.message) {
@@ -80,7 +80,7 @@
 //   const completePurchase = async () => {
 //     for (let item of billItems) {
 //       const res = await fetch(
-//         `http://localhost:4000/api/grocery/barcode/${item.barcode}/decrease`,
+//         `/api/grocery/barcode/${item.barcode}/decrease`,
 //         {
 //           method: "PUT",
 //           headers: { "Content-Type": "application/json" },
@@ -202,7 +202,7 @@
 //     setScannedCode(barcode);
 
 //     try {
-//       const res = await fetch(`http://localhost:4000/api/grocery/barcode/${barcode}`);
+//       const res = await fetch(`/api/grocery/barcode/${barcode}`);
 //       const data = await res.json();
 //       if (data && !data.message) {
 //         if (data.stock <= 0) {
@@ -241,7 +241,7 @@
 //   const completePurchase = async () => {
 //     for (let item of billItems) {
 //       const res = await fetch(
-//         `http://localhost:4000/api/grocery/barcode/${item.barcode}/decrease`,
+//         `/api/grocery/barcode/${item.barcode}/decrease`,
 //         {
 //           method: "PUT",
 //           headers: { "Content-Type": "application/json" },
@@ -376,7 +376,7 @@ export default function BillingPage() {
     setScannedCode(barcode);
 
     try {
-      const res = await fetch(`http://localhost:4000/api/grocery/barcode/${barcode}`);
+      const res = await fetch(`/api/grocery/barcode/${barcode}`);
       const data = await res.json();
 
       if (data && !data.message) {
@@ -417,7 +417,7 @@ export default function BillingPage() {
   const completePurchase = async () => {
     for (let item of billItems) {
       const res = await fetch(
-        `http://localhost:4000/api/grocery/barcode/${item.barcode}/decrease`,
+        `/api/grocery/barcode/${item.barcode}/decrease`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

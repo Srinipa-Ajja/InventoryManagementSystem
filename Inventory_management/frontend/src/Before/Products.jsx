@@ -14,7 +14,7 @@
 
 //   // --- Fetch products ---
 //   useEffect(() => {
-//     fetch("http://localhost:4000/api/grocery")
+//     fetch("/api/grocery")
 //       .then((res) => res.json())
 //       .then((data) => {
 //         setAllProducts(data);
@@ -232,7 +232,7 @@ function ProductDetails() {
 
   // --- Fetch products ---
   useEffect(() => {
-    fetch("http://localhost:4000/api/grocery")
+    fetch("/api/grocery")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);

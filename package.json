@@ -1,0 +1,11 @@
+{
+  "name": "inventory-management-system",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd Inventory_management/frontend && npm install && npm run build",
+    "start": "node Inventory_management/backend/server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

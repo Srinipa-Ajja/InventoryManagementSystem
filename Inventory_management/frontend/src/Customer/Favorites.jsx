@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     const fetchAllProducts = async () => {
 //       try {
-//         const res = await fetch("http://localhost:4000/api/grocery");
+//         const res = await fetch("/api/grocery");
 //         const data = await res.json();
 //         setAllProducts(data);
 //       } catch (err) {
@@ -28,7 +28,7 @@
 
 //     const fetchFavourites = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:4000/api/users/${user._id}/favourites`);
+//         const res = await fetch(`/api/users/${user._id}/favourites`);
 //         const data = await res.json();
 //         const favProducts = allProducts.filter((item) => data.favourites.includes(item._id));
 //         setFavorites(favProducts);
@@ -42,7 +42,7 @@
 //   // Toggle favorite
 //   const toggleFavorites = async (item) => {
 //     try {
-//       const res = await fetch(`http://localhost:4000/api/users/favorites/${item._id}`, {
+//       const res = await fetch(`/api/users/favorites/${item._id}`, {
 //         method: "PUT",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ userId: user._id }),
@@ -119,7 +119,7 @@ function Favorites({ favorites, setFavorites }) {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/grocery");
+        const res = await fetch("/api/grocery");
         const data = await res.json();
         setAllProducts(data);
       } catch (err) {
@@ -135,7 +135,7 @@ function Favorites({ favorites, setFavorites }) {
 
     const fetchFavourites = async () => {
       try {
-        const res = await fetch(`http://localhost:4000/api/users/${user._id}/favourites`);
+        const res = await fetch(`/api/users/${user._id}/favourites`);
         const data = await res.json();
         const favProducts = allProducts.filter((item) =>
           data.favourites.includes(item._id)
@@ -151,7 +151,7 @@ function Favorites({ favorites, setFavorites }) {
   // Toggle favorite
   const toggleFavorites = async (item) => {
     try {
-      await fetch(`http://localhost:4000/api/users/favorites/${item._id}`, {
+      await fetch(`/api/users/favorites/${item._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),

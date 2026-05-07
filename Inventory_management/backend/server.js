@@ -327,10 +327,15 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use("/images", express.static(path.join(__dirname, "images")));
 
+// Serve React frontend build
+const frontendDist = path.join(__dirname, "../frontend/dist");
+app.use(express.static(frontendDist));
+
 // ==========================
 // MongoDB Connection
 // ==========================
 const mongoURI =
+  process.env.MONGO_URI ||
   "mongodb+srv://lkgcoding:code%40lkg@inventory-management.lu8yxdh.mongodb.net/inventorydb?retryWrites=true&w=majority";
 
 mongoose
@@ -338,12 +343,13 @@ mongoose
   .then(() => {
     console.log("✅ MongoDB connected successfully");
 
-    app.listen(process.env.PORT || 4000, "0.0.0.0", () => {
-      console.log(`🚀 Server running on port ${process.env.PORT || 4000}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
     console.error("❌ MongoDB connection failed:", err);
+    process.exit(1);
   });
 // ==========================
 // Schemas & Models
@@ -795,9 +801,14 @@ app.put("/api/grocery/barcode/:barcode/decrease", async (req, res) => {
 app.get("/api/orders/:email", async (req, res) => {
   try {
     const { email } = req.params;
-    const orders = await Order.find({ email }); // fetch only user's orders
+    const orders = await Order.find({ email });
     res.json({ orders });
   } catch (err) {
     res.status(500).json({ error: "Error fetching orders" });
   }
+});
+
+// Catch-all: serve React app for any non-API route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });

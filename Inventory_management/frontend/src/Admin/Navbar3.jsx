@@ -144,7 +144,7 @@ export default function Navbar({ user, setUser }) {
       return;
     }
     try {
-      const res = await fetch("http://localhost:4000/api/grocery");
+      const res = await fetch("/api/grocery");
       const data = await res.json();
       const filtered = data.filter(
         (item) =>

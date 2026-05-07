@@ -15,12 +15,12 @@
 //         setLoading(true);
 
 //         // 1️⃣ Get user's cart IDs from DB
-//         const cartRes = await fetch(`http://localhost:4000/api/users/${user._id}/cart`);
+//         const cartRes = await fetch(`/api/users/${user._id}/cart`);
 //         const cartData = await cartRes.json();
 //         const cartIds = cartData.cart; // array of product _id
 
 //         // 2️⃣ Fetch all groceries
-//         const groceriesRes = await fetch("http://localhost:4000/api/grocery");
+//         const groceriesRes = await fetch("/api/grocery");
 //         const groceries = await groceriesRes.json();
 
 //         // 3️⃣ Filter groceries by cart IDs
@@ -39,7 +39,7 @@
 //   const removeFromCart = async (productId) => {
 //     setLoading(true);
 //     try {
-//       await fetch(`http://localhost:4000/api/users/cart/${productId}`, {
+//       await fetch(`/api/users/cart/${productId}`, {
 //         method: "PUT",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ userId: user._id, remove: true }),
@@ -116,11 +116,11 @@ function Cart() {
     const fetchCartData = async () => {
       try {
         setLoading(true);
-        const cartRes = await fetch(`http://localhost:4000/api/users/${user._id}/cart`);
+        const cartRes = await fetch(`/api/users/${user._id}/cart`);
         const cartData = await cartRes.json();
         const cartIds = cartData.cart;
 
-        const groceriesRes = await fetch("http://localhost:4000/api/grocery");
+        const groceriesRes = await fetch("/api/grocery");
         const groceries = await groceriesRes.json();
 
         const filteredProducts = groceries.filter((item) => cartIds.includes(item._id));
@@ -138,7 +138,7 @@ function Cart() {
   const removeFromCart = async (productId) => {
     setLoading(true);
     try {
-      await fetch(`http://localhost:4000/api/users/cart/${productId}`, {
+      await fetch(`/api/users/cart/${productId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id, remove: true }),

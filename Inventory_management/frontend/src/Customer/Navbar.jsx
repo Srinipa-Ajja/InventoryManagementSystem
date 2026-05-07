@@ -30,7 +30,7 @@ export default function Navbar({ user, setUser }) {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/api/grocery");
+      const response = await fetch("/api/grocery");
       const data = await response.json();
       
       const filtered = data.filter((item) =>

@@ -8,7 +8,7 @@
 
 //   // ✅ Fetch groceries
 //   useEffect(() => {
-//     fetch("http://localhost:4000/api/grocery")
+//     fetch("/api/grocery")
 //       .then((res) => res.json())
 //       .then((data) => {
 //         console.log("Fetched data:", data);
@@ -33,7 +33,7 @@
 
 //     try {
 //       const res = await fetch(
-//         `http://localhost:4000/api/users/cart/${item._id}`,
+//         `/api/users/cart/${item._id}`,
 //         {
 //           method: "PUT",
 //           headers: { "Content-Type": "application/json" },
@@ -67,7 +67,7 @@
 
 //     try {
 //       const res = await fetch(
-//         `http://localhost:4000/api/users/favorites/${item._id}`,
+//         `/api/users/favorites/${item._id}`,
 //         {
 //           method: "PUT",
 //           headers: { "Content-Type": "application/json" },
@@ -240,13 +240,13 @@ function Home({ cart, setCart, favorites, setFavorites }) {
         
         if (user) {
           // Fetch cart
-          const cartRes = await fetch(`http://localhost:4000/api/users/${user._id}/cart`);
+          const cartRes = await fetch(`/api/users/${user._id}/cart`);
           const cartData = await cartRes.json();
           userCartIds = cartData.cart || [];
           console.log("Cart IDs from DB:", userCartIds);
           
           // Fetch favorites
-          const favRes = await fetch(`http://localhost:4000/api/users/${user._id}/favourites`);
+          const favRes = await fetch(`/api/users/${user._id}/favourites`);
           const favData = await favRes.json();
           userFavIds = favData.favourites || [];
           console.log("Favorites IDs from DB:", userFavIds);
@@ -256,7 +256,7 @@ function Home({ cart, setCart, favorites, setFavorites }) {
         }
 
         // Then fetch groceries
-        const groceryRes = await fetch("http://localhost:4000/api/grocery");
+        const groceryRes = await fetch("/api/grocery");
         const groceryData = await groceryRes.json();
         console.log("Groceries fetched:", groceryData.length, "items");
         
@@ -304,7 +304,7 @@ function Home({ cart, setCart, favorites, setFavorites }) {
     setCart(updatedCart);
 
     try {
-      const response = await fetch(`http://localhost:4000/api/users/cart/${item._id}`, {
+      const response = await fetch(`/api/users/cart/${item._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -346,7 +346,7 @@ function Home({ cart, setCart, favorites, setFavorites }) {
     setFavorites(updatedFav);
 
     try {
-      const response = await fetch(`http://localhost:4000/api/users/favorites/${item._id}`, {
+      const response = await fetch(`/api/users/favorites/${item._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),

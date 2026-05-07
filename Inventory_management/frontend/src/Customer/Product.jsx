@@ -31,8 +31,8 @@
 
 //         if (user) {
 //           const [cartRes, favRes] = await Promise.all([
-//             fetch(`http://localhost:4000/api/users/${user._id}/cart`),
-//             fetch(`http://localhost:4000/api/users/${user._id}/favourites`),
+//             fetch(`/api/users/${user._id}/cart`),
+//             fetch(`/api/users/${user._id}/favourites`),
 //           ]);
 //           const cartData = await cartRes.json();
 //           const favData = await favRes.json();
@@ -42,7 +42,7 @@
 //           setFavorites(userFavIds);
 //         }
 
-//         const res = await fetch("http://localhost:4000/api/grocery");
+//         const res = await fetch("/api/grocery");
 //         const data = await res.json();
 
 //         const updatedProducts = data.map((item) => ({
@@ -101,7 +101,7 @@
 //     setCart(updatedCart);
 
 //     try {
-//       await fetch(`http://localhost:4000/api/users/cart/${item._id}`, {
+//       await fetch(`/api/users/cart/${item._id}`, {
 //         method: "PUT",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ userId: user._id }),
@@ -133,7 +133,7 @@
 //     setFavorites(updatedFav);
 
 //     try {
-//       await fetch(`http://localhost:4000/api/users/favorites/${item._id}`, {
+//       await fetch(`/api/users/favorites/${item._id}`, {
 //         method: "PUT",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ userId: user._id }),
@@ -180,7 +180,7 @@
 
 //     try {
 //       // 1. Update product stock
-//       const stockRes = await fetch(`http://localhost:4000/api/grocery/${product._id}`, {
+//       const stockRes = await fetch(`/api/grocery/${product._id}`, {
 //         method: "PUT",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ stock: newStock }),
@@ -204,7 +204,7 @@
 //         email: user.email
 //       };
 
-//       const orderRes = await fetch("http://localhost:4000/api/orders", {
+//       const orderRes = await fetch("/api/orders", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify(orderData),
@@ -541,8 +541,8 @@ function ProductDetails({ cart, setCart, favorites, setFavorites }) {
 
         if (user) {
           const [cartRes, favRes] = await Promise.all([
-            fetch(`http://localhost:4000/api/users/${user._id}/cart`),
-            fetch(`http://localhost:4000/api/users/${user._id}/favourites`),
+            fetch(`/api/users/${user._id}/cart`),
+            fetch(`/api/users/${user._id}/favourites`),
           ]);
           const cartData = await cartRes.json();
           const favData = await favRes.json();
@@ -552,7 +552,7 @@ function ProductDetails({ cart, setCart, favorites, setFavorites }) {
           setFavorites(userFavIds);
         }
 
-        const res = await fetch("http://localhost:4000/api/grocery");
+        const res = await fetch("/api/grocery");
         const data = await res.json();
 
         const updatedProducts = data.map((item) => ({
@@ -606,7 +606,7 @@ function ProductDetails({ cart, setCart, favorites, setFavorites }) {
     setCart(updatedCart);
 
     try {
-      await fetch(`http://localhost:4000/api/users/cart/${item._id}`, {
+      await fetch(`/api/users/cart/${item._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -635,7 +635,7 @@ function ProductDetails({ cart, setCart, favorites, setFavorites }) {
     setFavorites(updatedFav);
 
     try {
-      await fetch(`http://localhost:4000/api/users/favorites/${item._id}`, {
+      await fetch(`/api/users/favorites/${item._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -677,7 +677,7 @@ function ProductDetails({ cart, setCart, favorites, setFavorites }) {
     const orderDate = new Date().toISOString();
 
     try {
-      await fetch(`http://localhost:4000/api/grocery/${product._id}`, {
+      await fetch(`/api/grocery/${product._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ stock: newStock }),
@@ -695,7 +695,7 @@ function ProductDetails({ cart, setCart, favorites, setFavorites }) {
         email: user.email
       };
 
-      const orderRes = await fetch("http://localhost:4000/api/orders", {
+      const orderRes = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),

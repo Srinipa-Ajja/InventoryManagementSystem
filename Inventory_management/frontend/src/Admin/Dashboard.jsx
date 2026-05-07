@@ -233,7 +233,7 @@
 //   }, []);
 
 //   const fetchGroceryData = () => {
-//     fetch("http://localhost:4000/api/grocery")
+//     fetch("/api/grocery")
 //       .then(res => res.json())
 //       .then(data => {
 //         setGrocery(data);
@@ -647,7 +647,7 @@ const Dashboard = () => {
   }, []);
 
   const fetchGroceryData = () => {
-    fetch("http://localhost:4000/api/grocery")
+    fetch("/api/grocery")
       .then(res => res.json())
       .then(data => {
         setGrocery(data);

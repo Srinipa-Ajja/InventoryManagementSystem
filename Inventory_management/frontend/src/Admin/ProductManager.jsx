@@ -244,7 +244,7 @@ const ProductManager = () => {
 
   // Fetch existing products
   useEffect(() => {
-    fetch("http://localhost:4000/api/grocery")
+    fetch("/api/grocery")
       .then(res => res.json())
       .then(data => setGrocery(data))
       .catch(err => console.error("Fetch error:", err));
@@ -271,7 +271,7 @@ const ProductManager = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        const res = await fetch(`http://localhost:4000/api/grocery/${id}`, {
+        const res = await fetch(`/api/grocery/${id}`, {
           method: "DELETE",
         });
         if (!res.ok) throw new Error("Failed to delete");
@@ -287,8 +287,8 @@ const ProductManager = () => {
     try {
       const method = formData._id ? "PUT" : "POST";
       const url = formData._id
-        ? `http://localhost:4000/api/grocery/${formData._id}`
-        : "http://localhost:4000/api/grocery";
+        ? `/api/grocery/${formData._id}`
+        : "/api/grocery";
 
       const res = await fetch(url, {
         method,

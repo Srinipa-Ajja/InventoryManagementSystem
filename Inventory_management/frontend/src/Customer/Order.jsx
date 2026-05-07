@@ -18,7 +18,7 @@
 
 //   const fetchOrdersWithProducts = async () => {
 //   try {
-//     const ordersRes = await fetch(`http://localhost:4000/api/orders/`);
+//     const ordersRes = await fetch(`/api/orders/`);
 //     const ordersData = await ordersRes.json();
 
 //     // ✅ Filter only logged-in user's orders
@@ -26,7 +26,7 @@
 //       (order) => order.email === user.email
 //     );
 
-//     const productsRes = await fetch(`http://localhost:4000/api/grocery`);
+//     const productsRes = await fetch(`/api/grocery`);
 //     const productsData = await productsRes.json();
 
 //     const ordersWithProducts = userOrders.map(order => {
@@ -55,7 +55,7 @@
 
 //     setRemovingOrderId(orderId);
 //     try {
-//       const res = await fetch(`http://localhost:4000/api/orders/${orderId}`, {
+//       const res = await fetch(`/api/orders/${orderId}`, {
 //         method: "DELETE",
 //       });
 
@@ -276,14 +276,14 @@ function Orders() {
 
   const fetchOrdersWithProducts = async () => {
     try {
-      const ordersRes = await fetch(`http://localhost:4000/api/orders/`);
+      const ordersRes = await fetch(`/api/orders/`);
       const ordersData = await ordersRes.json();
 
       const userOrders = (ordersData.orders || []).filter(
         (order) => order.email === user.email
       );
 
-      const productsRes = await fetch(`http://localhost:4000/api/grocery`);
+      const productsRes = await fetch(`/api/grocery`);
       const productsData = await productsRes.json();
 
       const ordersWithProducts = userOrders.map((order) => {
@@ -309,7 +309,7 @@ function Orders() {
 
     setRemovingOrderId(orderId);
     try {
-      const res = await fetch(`http://localhost:4000/api/orders/${orderId}`, {
+      const res = await fetch(`/api/orders/${orderId}`, {
         method: "DELETE",
       });
 

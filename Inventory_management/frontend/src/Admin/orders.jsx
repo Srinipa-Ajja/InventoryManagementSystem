@@ -13,12 +13,12 @@
 //   const fetchOrdersWithProducts = async () => {
 //     try {
 //       // Fetch ALL orders from the orders collection (no email filter for admin)
-//       const ordersRes = await fetch(`http://localhost:4000/api/orders`);
+//       const ordersRes = await fetch(`/api/orders`);
 //       const ordersData = await ordersRes.json();
 //       const allOrders = ordersData.orders || [];
 
 //       // Fetch all products
-//       const productsRes = await fetch(`http://localhost:4000/api/grocery`);
+//       const productsRes = await fetch(`/api/grocery`);
 //       const productsData = await productsRes.json();
 
 //       // Map orders with product details
@@ -43,7 +43,7 @@
 //   const handleUpdateStatus = async (orderId, newStatus) => {
 //     setUpdatingOrderId(orderId);
 //     try {
-//       const res = await fetch(`http://localhost:4000/api/orders/${orderId}`, {
+//       const res = await fetch(`/api/orders/${orderId}`, {
 //         method: "PUT",
 //         headers: {
 //           "Content-Type": "application/json"
@@ -75,7 +75,7 @@
 
 //     setRemovingOrderId(orderId);
 //     try {
-//       const res = await fetch(`http://localhost:4000/api/orders/${orderId}`, {
+//       const res = await fetch(`/api/orders/${orderId}`, {
 //         method: "DELETE",
 //       });
 
@@ -455,11 +455,11 @@ function Orders() {
 
   const fetchOrdersWithProducts = async () => {
     try {
-      const ordersRes = await fetch(`http://localhost:4000/api/orders`);
+      const ordersRes = await fetch(`/api/orders`);
       const ordersData = await ordersRes.json();
       const allOrders = ordersData.orders || [];
 
-      const productsRes = await fetch(`http://localhost:4000/api/grocery`);
+      const productsRes = await fetch(`/api/grocery`);
       const productsData = await productsRes.json();
 
       const ordersWithProducts = allOrders.map(order => {
@@ -483,7 +483,7 @@ function Orders() {
   const handleUpdateStatus = async (orderId, newStatus) => {
     setUpdatingOrderId(orderId);
     try {
-      const res = await fetch(`http://localhost:4000/api/orders/${orderId}`, {
+      const res = await fetch(`/api/orders/${orderId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus })
@@ -499,7 +499,7 @@ function Orders() {
     if (!window.confirm("Are you sure you want to remove this order?")) return;
     setRemovingOrderId(orderId);
     try {
-      const res = await fetch(`http://localhost:4000/api/orders/${orderId}`, { method: "DELETE" });
+      const res = await fetch(`/api/orders/${orderId}`, { method: "DELETE" });
       if (res.ok) setOrders(orders.filter(order => order._id !== orderId));
       else alert("Failed to remove order");
     } catch (err) { console.error(err); alert("Error removing order"); }
