@@ -2,7 +2,7 @@
   "name": "inventory-management-system",
   "version": "1.0.0",
   "scripts": {
-    "build": "cd Inventory_management/backend && npm install && cd ../frontend && npm install --include=dev && npm run build",
+    "build": "cd Inventory_management/backend && npm install && cd ../frontend && npm install && npm run build",
     "start": "node Inventory_management/backend/server.js"
   },
   "engines": {
