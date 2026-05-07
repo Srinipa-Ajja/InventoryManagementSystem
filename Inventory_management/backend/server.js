@@ -323,13 +323,20 @@ const PORT = process.env.PORT || 4000;
 // ==========================
 // Middleware
 // ==========================
+app.use((req, res, next) => {
+  console.log(`→ ${req.method} ${req.url}`);
+  next();
+});
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 // Serve React frontend build
 const frontendDist = path.join(__dirname, "../frontend/dist");
-app.use(express.static(frontendDist));
+const fs = require("fs");
+if (fs.existsSync(frontendDist)) {
+  app.use(express.static(frontendDist));
+}
 
 // ==========================
 // MongoDB Connection
@@ -816,7 +823,9 @@ app.get("/api/orders/:email", async (req, res) => {
 // Catch-all: serve React app for any non-API route
 app.use((req, res) => {
   const indexFile = path.join(__dirname, "../frontend/dist/index.html");
-  res.sendFile(indexFile, (err) => {
-    if (err) res.status(200).send("API is running. Frontend build missing — check build logs.");
-  });
+  if (fs.existsSync(indexFile)) {
+    res.sendFile(indexFile);
+  } else {
+    res.status(200).send("Server is running on port " + process.env.PORT + ". Frontend not built yet.");
+  }
 });
