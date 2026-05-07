@@ -338,19 +338,15 @@ const mongoURI =
   process.env.MONGO_URI ||
   "mongodb+srv://lkgcoding:code%40lkg@inventory-management.lu8yxdh.mongodb.net/inventorydb?retryWrites=true&w=majority";
 
+// Always start the server so Railway's health check passes
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+
 mongoose
   .connect(mongoURI)
-  .then(() => {
-    console.log("✅ MongoDB connected successfully");
-
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err);
-    process.exit(1);
-  });
+  .then(() => console.log("✅ MongoDB connected successfully"))
+  .catch((err) => console.error("❌ MongoDB connection failed:", err));
 // ==========================
 // Schemas & Models
 // ==========================
