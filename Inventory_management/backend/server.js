@@ -346,10 +346,16 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
 
+// autoIndex:false prevents crash when existing docs violate the unique barcode index
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, { autoIndex: false })
   .then(() => console.log("✅ MongoDB connected successfully"))
   .catch((err) => console.error("❌ MongoDB connection failed:", err));
+
+// Catch any unhandled rejections so Node 22 doesn't crash the process
+process.on("unhandledRejection", (reason) => {
+  console.error("⚠️ Unhandled Rejection:", reason);
+});
 // ==========================
 // Schemas & Models
 // ==========================
