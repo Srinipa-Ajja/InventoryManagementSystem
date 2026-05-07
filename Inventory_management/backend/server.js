@@ -338,6 +338,9 @@ const mongoURI =
   process.env.MONGO_URI ||
   "mongodb+srv://lkgcoding:code%40lkg@inventory-management.lu8yxdh.mongodb.net/inventorydb?retryWrites=true&w=majority";
 
+// Health check — Railway pings this to verify the container is alive
+app.get("/health", (req, res) => res.status(200).send("OK"));
+
 // Always start the server so Railway's health check passes
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`);
@@ -806,5 +809,8 @@ app.get("/api/orders/:email", async (req, res) => {
 
 // Catch-all: serve React app for any non-API route
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  const indexFile = path.join(__dirname, "../frontend/dist/index.html");
+  res.sendFile(indexFile, (err) => {
+    if (err) res.status(200).send("API is running. Frontend build missing — check build logs.");
+  });
 });
