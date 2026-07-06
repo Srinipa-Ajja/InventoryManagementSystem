@@ -1,45 +1,107 @@
-# Inventory Management System (MERN)
+# 📦 Inventory Management System
 
-## Description
-This is a full-stack Inventory Management System developed using the MERN stack.
-The application allows users to manage inventory items and stock levels through
-a React-based frontend and a Node.js + Express backend. The database is hosted on
-MongoDB Atlas, so users do not need to install MongoDB or log in to MongoDB Atlas.
+A full-stack Inventory Management System built using the MERN stack to help businesses efficiently manage inventory, track stock levels, and streamline product management. The application provides a modern user interface with secure authentication and real-time inventory operations.
 
-## Features
-- User authentication (Login & Signup)
-- Add, update, and delete inventory items
-- Manage product stock quantities
-- RESTful API based backend
-- Cloud-hosted database using MongoDB Atlas
-- Modern, component-based UI with React
+## 🚀 Live Demo
 
-## Tech Stack
-- MongoDB Atlas (Cloud Database)
-- Express.js
+🔗 https://inventorymanagementsystem-production-044a.up.railway.app/
+
+## 📂 GitHub Repository
+
+🔗 https://github.com/Srinipa-Ajja/InventoryManagementSystem
+
+---
+
+## ✨ Features
+
+- 🔐 User Authentication (Login & Signup)
+- 📦 Add, Edit, and Delete Products
+- 📊 Track Inventory and Stock Levels
+- 🔍 Search and Manage Inventory
+- ⚡ RESTful API Architecture
+- ☁️ MongoDB Atlas Cloud Database
+- 💻 Responsive React Frontend
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - React.js
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
 - Node.js
+- Express.js
 
-## How to Run the Project
+### Database
+- MongoDB Atlas
 
-### Prerequisites
-- Node.js installed
-- Internet connection (for MongoDB Atlas)
+### Deployment
+- Railway
 
-### Steps
-1. Clone the repository  
-   git clone https://github.com/Srinipa-Ajja/InventoryManagementSystem.git
+---
 
-2. Backend setup  
-   cd backend  
-   npm install  
-   npm start
+## 📁 Project Structure
 
-3. Frontend setup  
-   cd frontend  
-   npm install  
-   npm start
+```
+InventoryManagementSystem/
+│
+├── frontend/
+├── backend/
+├── README.md
+└── package.json
+```
 
-4. Open the application in your browser  
-   http://localhost:3000
+---
 
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Srinipa-Ajja/InventoryManagementSystem.git
+```
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 📈 Future Improvements
+
+- Sales Analytics Dashboard
+- Export Inventory Reports (CSV/Excel)
+- Barcode Integration
+- Role-Based Access Control
+- Email Notifications
+
+---
+
+## 👨‍💻 Author
+
+**Srinipa Ajja**
+
+- LinkedIn
+- GitHub
